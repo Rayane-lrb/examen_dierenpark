@@ -1,11 +1,11 @@
 public class Adres {
 
     private String straat;
-    private String huisnummer;
-    private String postcode;
+    private int huisnummer;
+    private int postcode;
     private String woonplaats;
 
-    public Adres(String straat, String huisnummer, String postcode, String woonplaats) {
+    public Adres(String straat, int huisnummer, int postcode, String woonplaats) {
         this.straat = straat;
         this.huisnummer = huisnummer;
         this.postcode = postcode;
@@ -16,11 +16,11 @@ public class Adres {
         return straat;
     }
 
-    public String getHuisnummer() {
+    public int getHuisnummer() {
         return huisnummer;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
@@ -32,11 +32,11 @@ public class Adres {
         this.straat = straat;
     }
 
-    public void setHuisnummer(String huisnummer) {
+    public void setHuisnummer(int huisnummer) {
         this.huisnummer = huisnummer;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 

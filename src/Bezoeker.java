@@ -12,16 +12,9 @@ public class Bezoeker extends Persoon {
         return leeftijdscategorie;
     }
 
-    private void setLeeftijdscategorie(String leeftijdscategorie2) {
-        if (leeftijd > 12) {
-            this.leeftijdscategorie = Leeftijdcategorieen.MIN_TWAALF.name();
-        } else if (leeftijd >= 12 && leeftijd < 18) {
-            this.leeftijdscategorie = Leeftijdcategorieen.KINDEREN.name();
-        } else if (leeftijd >= 18 && leeftijd < 65) {
-            this.leeftijdscategorie = Leeftijdcategorieen.VOLWASSENEN.name();
-        } else {
-            this.leeftijdscategorie = Leeftijdcategorieen.VIJFENZESTIG_PLUS.name();
-        }
+    public void setLeeftijdscategorie(String leeftijdscategorie) {
+        this.leeftijdscategorie = leeftijdscategorie;
+        
     }
 
     public int getAantalBezoekers() {

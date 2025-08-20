@@ -5,8 +5,8 @@ public class Tours {
     private Zone zone;
     private ArrayList<Leeftijdcategorieen> leeftijdsGroep = new ArrayList<>();
     private ArrayList<Activiteit> activiteitenLijst = new ArrayList<>();
-    private ArrayList<Personeelslid> personeelsledenLijst = new ArrayList<>();
-    private ArrayList<Bezoeker> bezoekersLijst = new ArrayList<>();
+    private ArrayList<Bezoeker> TourBezoekers = new ArrayList<>();
+    private ArrayList<Personeelslid> Tourpersoneel = new ArrayList<>();
 
     public Tours(String naam, Zone zone) {
         this.naam = naam;
@@ -29,11 +29,11 @@ public class Tours {
     }
 
     public ArrayList<Personeelslid> getPersoneelsledenLijst() {
-        return personeelsledenLijst;
+        return Tourpersoneel;
     }
 
     public ArrayList<Bezoeker> getBezoekersLijst() {
-        return bezoekersLijst;
+        return TourBezoekers;
     }
 
     public void setNaam(String naam) {
@@ -51,30 +51,22 @@ public class Tours {
         this.activiteitenLijst = activiteitenLijst;
     }
 
-    public void setPersoneelsledenLijst(ArrayList<Personeelslid> personeelsledenLijst) {
-        this.personeelsledenLijst = personeelsledenLijst;
-    }
-
-    public void setBezoekersLijst(ArrayList<Bezoeker> bezoekersLijst) {
-        this.bezoekersLijst = bezoekersLijst;
-    }
-
     public void voegBezoekerToe(Bezoeker bezoeker) {
-        if (!bezoekersLijst.contains(bezoeker)) {
-            bezoekersLijst.add(bezoeker);
+        if (!TourBezoekers.contains(bezoeker)) {
+            TourBezoekers.add(bezoeker);
         }
     }
 
     public void verwijderBezoeker(Bezoeker bezoeker) {
-        if (!bezoekersLijst.contains(bezoeker)) {
+        if (!TourBezoekers.contains(bezoeker)) {
             throw new IllegalArgumentException("Bezoeker bestaat niet in deze tour.");
         }
-        bezoekersLijst.remove(bezoeker);
+        TourBezoekers.remove(bezoeker);
     }
 
     public void voegPersoneelslidToe(Personeelslid personeelslid) {
-        if (!personeelsledenLijst.contains(personeelslid)) {
-            personeelsledenLijst.add(personeelslid);
+        if (!Tourpersoneel.contains(personeelslid)) {
+            Tourpersoneel.add(personeelslid);
         }
     }
 
@@ -104,7 +96,7 @@ public class Tours {
                 ", zone=" + zone +
                 ", leeftijdsGroep=" + leeftijdsGroep +
                 ", activiteiten=" + activiteitenLijst +
-                ", personeelsleden=" + personeelsledenLijst +
-                ", bezoekers=" + bezoekersLijst + '}';
+                ", personeelsleden=" + Tourpersoneel +
+                ", bezoekers=" + TourBezoekers + '}';
     }
 }
