@@ -1,5 +1,9 @@
+/**
+* @author Laroub Rayane
+* @version 1.0
+*/
 public class Adres {
-
+//Zorgt voor het bijhouden van een adres bij het aanmaken van een bezoeker of personeel
     private String straat;
     private int huisnummer;
     private int postcode;
@@ -43,7 +47,7 @@ public class Adres {
     public void setWoonplaats(String woonplaats) {
         this.woonplaats = woonplaats;
     }
-
+//Geeft alles weer als String ipv object
     @Override
     public String toString() {
         return straat + " " + huisnummer + ", " + postcode + " " + woonplaats;

@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
+/**
+ * @author Laroub Rayane
+ * @version 2.0
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,46 +33,52 @@ public class Main {
             int keuze = Integer.parseInt(scanner.nextLine());
             switch (keuze) {
                 case 1:
-                    System.out.print("Geef de functie van het personeelslid in (Gids, Poetsploeg of Verzorger): ");
-                    String functie = scanner.nextLine();
-                    if (!functie.equalsIgnoreCase("Gids") && !functie.equalsIgnoreCase("Poetsploeg")
-                            && !functie.equalsIgnoreCase("Verzorger")) {
-                        System.out.println("Ongeldige functie, probeer het opnieuw.");
+                    try {
+                        System.out.print("Geef de functie van het personeelslid in (Gids, Poetsploeg of Verzorger): ");
+                        String functie = scanner.nextLine();
+                        if (!functie.equalsIgnoreCase("Gids") && !functie.equalsIgnoreCase("Poetsploeg")
+                                && !functie.equalsIgnoreCase("Verzorger")) {
+                            System.out.println("Ongeldige functie, probeer het opnieuw.");
+                            break;
+                        }
+
+                        System.out.print("Voer de naam van het personeelslid in: ");
+                        String personeelNaam = scanner.nextLine();
+
+                        System.out.print("Voer de leeftijd van het personeelslid in: ");
+                        int personeelLeeftijd = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Geef de straatnaam van het adres in: ");
+                        String personeelStraatnaam = scanner.nextLine();
+
+                        System.out.print("Geef het huisnummer van het adres in: ");
+                        int personeelHuisnummer = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Geef de postcode van het adres in: ");
+                        int personeelPostcode = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Geef de woonplaats van het adres in: ");
+                        String personeelWoonplaats = scanner.nextLine();
+
+                        Adres personeelAdres = new Adres(personeelStraatnaam, personeelHuisnummer, personeelPostcode,
+                                personeelWoonplaats);
+                        if (functie.equalsIgnoreCase("Gids")) {
+                            Gids gids = new Gids(personeelNaam, personeelLeeftijd, personeelAdres);
+                            personeelsleden.add(gids);
+                        } else if (functie.equalsIgnoreCase("Poetsploeg")) {
+                            Poetsploeg poetsploeg = new Poetsploeg(personeelNaam, personeelLeeftijd, personeelAdres);
+                            personeelsleden.add(poetsploeg);
+                        } else if (functie.equalsIgnoreCase("Verzorger")) {
+                            Verzorger verzorger = new Verzorger(personeelNaam, personeelLeeftijd, personeelAdres);
+                            personeelsleden.add(verzorger);
+                        }
+                        System.out.println("Personeelslid aangemaakt: " + personeelNaam + ", Functie: " + functie);
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Ongeldige invoer, probeer het opnieuw.");
                         break;
                     }
 
-                    System.out.print("Voer de naam van het personeelslid in: ");
-                    String personeelNaam = scanner.nextLine();
-
-                    System.out.print("Voer de leeftijd van het personeelslid in: ");
-                    int personeelLeeftijd = Integer.parseInt(scanner.nextLine());
-
-                    System.out.print("Geef de straatnaam van het adres in: ");
-                    String personeelStraatnaam = scanner.nextLine();
-
-                    System.out.print("Geef het huisnummer van het adres in: ");
-                    int personeelHuisnummer = Integer.parseInt(scanner.nextLine());
-
-                    System.out.print("Geef de postcode van het adres in: ");
-                    int personeelPostcode = Integer.parseInt(scanner.nextLine());
-
-                    System.out.print("Geef de woonplaats van het adres in: ");
-                    String personeelWoonplaats = scanner.nextLine();
-
-                    Adres personeelAdres = new Adres(personeelStraatnaam, personeelHuisnummer, personeelPostcode,
-                            personeelWoonplaats);
-                    if (functie.equalsIgnoreCase("Gids")) {
-                        Gids gids = new Gids(personeelNaam, personeelLeeftijd, personeelAdres);
-                        personeelsleden.add(gids);
-                    } else if (functie.equalsIgnoreCase("Poetsploeg")) {
-                        Poetsploeg poetsploeg = new Poetsploeg(personeelNaam, personeelLeeftijd, personeelAdres);
-                        personeelsleden.add(poetsploeg);
-                    } else if (functie.equalsIgnoreCase("Verzorger")) {
-                        Verzorger verzorger = new Verzorger(personeelNaam, personeelLeeftijd, personeelAdres);
-                        personeelsleden.add(verzorger);
-                    }
-                    System.out.println("Personeelslid aangemaakt: " + personeelNaam + ", Functie: " + functie);
-                    break;
                 case 2:
                     try {
                         System.out.println("Aanmaken activiteiten.");
@@ -126,10 +136,12 @@ public class Main {
                             }
                         }
                         Zone zone = new Zone(maximumCapaciteit, activiteitenSet);
-                        Tours tour = new Tours(tourNaam, zone);
+                        System.out.print("Geef het minimum leeftijd voor dit tour: ");
+                        int minLeeftijd = Integer.parseInt(scanner.nextLine());
+                        Tours tour = new Tours(tourNaam, zone, minLeeftijd);
                         toursLijst.add(tour);
                         System.out.println(
-                                "Tour aangemaakt: " + tour.getNaam() + " met zone: " + tour.getZone().toString());
+                                "Tour aangemaakt: " + tour.getNaam() + " met zone: " + tour.getZone().toString() + "minimum leeftijd: " + tour.getMinLeefijd());
                         break;
                     } catch (NumberFormatException e) {
                         System.out.println("Ongeldige invoer, probeer het opnieuw.");
@@ -226,6 +238,10 @@ public class Main {
                         break;
                     }
                     Bezoeker gekozenBezoeker = bezoekersLijst.get(bezoekerIndex);
+                    if (gekozenBezoeker.getLeeftijd() < gekozenTour.getMinLeefijd()) {
+                        System.out.println("Bezoeker is te jong voor dit tour.");
+                        break;
+                    }
                     gekozenTour.voegBezoekerToe(gekozenBezoeker);
                     System.out.println("Bezoeker " + gekozenBezoeker.getNaam() + " is ingeschreven voor de tour: "
                             + gekozenTour.getNaam());
@@ -250,11 +266,9 @@ public class Main {
                     String sanitizedTitle = tourOpslaan.getNaam().replaceAll("[^a-zA-Z0-9]", "_");
                     try {
                         PrintWriter writer = new PrintWriter("Bezoekerslijst_" + sanitizedTitle + ".txt");
+                        writer.println("Aantal bezoekers voor deze tour: " + Bezoeker.getAantalBezoekers());
                         for (Bezoeker bezoekerInTour : tourOpslaan.getBezoekersLijst()) {
-                            writer.println(bezoekerInTour);
-                        }
-                        for (Bezoeker bezoekerInTour : tourOpslaan.getBezoekersLijst()) {
-                            writer.println(bezoekerInTour);
+                            writer.println("- " + bezoekerInTour);
                         }
                         writer.close();
                     } catch (java.io.IOException e) {

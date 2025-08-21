@@ -50,18 +50,18 @@ public class Activiteit {
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }
+//Dient om personeel toe te wijzen aan een actviteit
     public void addPersoneelslid(Personeelslid personeelslid) {
         if (personeelslid != null && !activiteitsPersoneelsleden.contains(personeelslid)) {
             activiteitsPersoneelsleden.add(personeelslid);
         }
     }
-
+//Geeft alles weer als String ipv object
     public String toString() {
         return "Activiteit: " +
                 "naam:'" + naam + '\'' +
                 ", beschrijving:'" + beschrijving + '\'' +
-                ", categorie:'" + categorie + '\'' +
-                '}';
+                ", categorie:'" + categorie + '\'';
     }
 
 }

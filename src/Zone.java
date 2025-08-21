@@ -1,5 +1,11 @@
 import java.util.Set;
 
+/**
+* @author Laroub Rayane
+* @version 1.0
+*/
+
+//Deze klasse bepaalt welke actviteiten er in een zone aanwezig zijn en de maximum capaciteit van deze zone, die nadien zal gebruikt worden door Tour
 public class Zone {
     private int maximumCapaciteit;
     private Set<Activiteit> activiteiten;
@@ -24,21 +30,13 @@ public class Zone {
     public void setActiviteiten(Set<Activiteit> activiteiten) {
         this.activiteiten = activiteiten;
     }
-
+    //Voegt actviteiten toe aan een zone
     public void voegActiviteitToe(Activiteit activiteit) {
         activiteiten.add(activiteit);
     }
-
-    public void verwijderActiviteit(Activiteit activiteit) {
-        if (!activiteiten.contains(activiteit)) {
-            throw new IllegalArgumentException("Activiteit bestaat niet in deze zone.");
-        }
-        activiteiten.remove(activiteit);
-    }
-
+    //Geeft weer als String ipv object
     @Override
     public String toString() {
-        return "Zone: " +
-                "maximumCapaciteit: " + maximumCapaciteit;
+        return "maximumCapaciteit: " + maximumCapaciteit;
     }
 }

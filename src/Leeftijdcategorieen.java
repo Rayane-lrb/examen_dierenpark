@@ -1,4 +1,9 @@
+/**
+* @author Laroub Rayane
+* @version 1.0
+*/
 public enum Leeftijdcategorieen {
+    //Bepaalt de groepscategorieen en hun tarieven
     MIN_TWAALF(9.00),
     KINDEREN(12.00),
     VOLWASSENEN(15.00),

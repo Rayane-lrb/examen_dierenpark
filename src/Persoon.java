@@ -1,5 +1,11 @@
+/**
+* @author Laroub Rayane
+* @version 1.0
+*/
 public abstract class Persoon {
-
+    /**
+ * Dit is een hoofdklasse die alleen maar dient om gebruikt te worden door subklassen
+ */
     private String naam;
     protected int leeftijd;
     private Adres adres;
@@ -36,7 +42,7 @@ public abstract class Persoon {
     public void setAdres(Adres adres) {
         this.adres = adres;
     }
-
+    //Zorgt ervoor dat het niet als een object wordt afgeprint maar als String
     @Override
     public String toString() {
         return "Naam: " + naam + ", Leeftijd: " + leeftijd + ", Adres: " + adres;

@@ -1,16 +1,21 @@
 import java.util.ArrayList;
-
+/**
+* @author Laroub Rayane
+* @version 1.0
+*/
 public class Tours {
     private String naam;
     private Zone zone;
+    private int minLeeftijd;
     private ArrayList<Leeftijdcategorieen> leeftijdsGroep = new ArrayList<>();
     private ArrayList<Activiteit> activiteitenLijst = new ArrayList<>();
     private ArrayList<Bezoeker> TourBezoekers = new ArrayList<>();
     private ArrayList<Personeelslid> Tourpersoneel = new ArrayList<>();
 
-    public Tours(String naam, Zone zone) {
+    public Tours(String naam, Zone zone, int minLeeftijd) {
         this.naam = naam;
         this.zone = zone;
+        this.minLeeftijd = minLeeftijd;
     }
 
     public String getNaam() {
@@ -19,7 +24,9 @@ public class Tours {
     public Zone getZone() {
         return zone;
     }
-
+    public int getMinLeefijd() {
+        return minLeeftijd;
+    }
     public ArrayList<Leeftijdcategorieen> getLeeftijdsGroep() {
         return leeftijdsGroep;
     }
@@ -42,6 +49,9 @@ public class Tours {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
+    public void setMinLeeftijd(int minLeeftijd) {
+        this.minLeeftijd = minLeeftijd;
+    }
 
     public void setLeeftijdsGroep(ArrayList<Leeftijdcategorieen> leeftijdsGroep) {
         this.leeftijdsGroep = leeftijdsGroep;
@@ -50,18 +60,11 @@ public class Tours {
     public void setActiviteitenLijst(ArrayList<Activiteit> activiteitenLijst) {
         this.activiteitenLijst = activiteitenLijst;
     }
-
+//Bezoeker touvoegen aan bezoekrslijst van een tour
     public void voegBezoekerToe(Bezoeker bezoeker) {
         if (!TourBezoekers.contains(bezoeker)) {
             TourBezoekers.add(bezoeker);
         }
-    }
-
-    public void verwijderBezoeker(Bezoeker bezoeker) {
-        if (!TourBezoekers.contains(bezoeker)) {
-            throw new IllegalArgumentException("Bezoeker bestaat niet in deze tour.");
-        }
-        TourBezoekers.remove(bezoeker);
     }
 
     public void voegPersoneelslidToe(Personeelslid personeelslid) {
@@ -75,20 +78,13 @@ public class Tours {
             leeftijdsGroep.add(leeftijdsCategorie);
         }
     }
-
+    //Voor het toevoegen van actviteiten 
     public void voegActiviteitToe(Activiteit activiteit) {
         if (!activiteitenLijst.contains(activiteit)) {
             activiteitenLijst.add(activiteit);
         }
     }
-
-    public void verwijderActiviteit(Activiteit activiteit) {
-        if (!activiteitenLijst.contains(activiteit)) {
-            throw new IllegalArgumentException("Activiteit bestaat niet in deze tour.");
-        }
-        activiteitenLijst.remove(activiteit);
-    }
-
+    //Geeft alles weer als String ipv object
     @Override
     public String toString() {
         return "Tours" +
