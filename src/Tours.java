@@ -91,12 +91,8 @@ public class Tours {
 
     @Override
     public String toString() {
-        return "Tours{" +
-                "naam='" + naam + '\'' +
-                ", zone=" + zone +
-                ", leeftijdsGroep=" + leeftijdsGroep +
-                ", activiteiten=" + activiteitenLijst +
-                ", personeelsleden=" + Tourpersoneel +
-                ", bezoekers=" + TourBezoekers + '}';
+        return "Tours" +
+                "naam: " + naam + '\'' +
+                ", zone: " + zone;
     }
 }

@@ -57,10 +57,10 @@ public class Activiteit {
     }
 
     public String toString() {
-        return "Activiteit{" +
-                "naam='" + naam + '\'' +
-                ", beschrijving='" + beschrijving + '\'' +
-                ", categorie='" + categorie + '\'' +
+        return "Activiteit: " +
+                "naam:'" + naam + '\'' +
+                ", beschrijving:'" + beschrijving + '\'' +
+                ", categorie:'" + categorie + '\'' +
                 '}';
     }
 

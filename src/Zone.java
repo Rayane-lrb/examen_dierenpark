@@ -38,9 +38,7 @@ public class Zone {
 
     @Override
     public String toString() {
-        return "Zone{" +
-                "maximumCapaciteit=" + maximumCapaciteit +
-                ", activiteiten=" + activiteiten +
-                '}';
+        return "Zone: " +
+                "maximumCapaciteit: " + maximumCapaciteit;
     }
 }
