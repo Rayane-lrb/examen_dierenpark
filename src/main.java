@@ -266,7 +266,6 @@ public class Main {
                     String sanitizedTitle = tourOpslaan.getNaam().replaceAll("[^a-zA-Z0-9]", "_");
                     try {
                         PrintWriter writer = new PrintWriter("Bezoekerslijst_" + sanitizedTitle + ".txt");
-                        writer.println("Aantal bezoekers voor deze tour: " + Bezoeker.getAantalBezoekers());
                         for (Bezoeker bezoekerInTour : tourOpslaan.getBezoekersLijst()) {
                             writer.println("- " + bezoekerInTour);
                         }
